@@ -39,10 +39,10 @@ body{
 
 main{
   margin: 0 auto;
-  padding: 30 px;
+  padding: 30px;
   background-color: white;
   width: 1400px;
-  min-height: 300px;
+  min-height: 350px;
 }
 
 header{
