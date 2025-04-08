@@ -1,19 +1,23 @@
 <template>
   <div class="content">
     <div class="preview">
-      <div class="preview-content">
-        <div class="top-row">
-          <img :src="selectedRobot.head.imageUrl" alt="preview" />
+      <CollapsibleSection>
+        <template v-slot:collapse>&#x25B2; Hide</template>
+        <template v-slot:expand>&#x25BC; Show</template>
+        <div class="preview-content">
+          <div class="top-row">
+            <img :src="selectedRobot.head.imageUrl" alt="preview" />
+          </div>
+          <div class="middle-row">
+            <img :src="selectedRobot.leftArm.imageUrl" class="rotate-left" alt="preview" />
+            <img :src="selectedRobot.torso.imageUrl" alt="preview" />
+            <img :src="selectedRobot.rightArm.imageUrl" class="rotate-right" alt="preview" />
+          </div>
+          <div class="bottom-row">
+            <img :src="selectedRobot.base.imageUrl" alt="preview" />
+          </div>
         </div>
-        <div class="middle-row">
-          <img :src="selectedRobot.leftArm.imageUrl" class="rotate-left" alt="preview" />
-          <img :src="selectedRobot.torso.imageUrl" alt="preview" />
-          <img :src="selectedRobot.rightArm.imageUrl" class="rotate-right" alt="preview" />
-        </div>
-        <div class="bottom-row">
-          <img :src="selectedRobot.base.imageUrl" alt="preview" />
-        </div>
-      </div>
+      </CollapsibleSection>
       <button class="add-to-cart" @click="addToCart()">Add to Cart</button>
     </div>
     <div class="top-row">
@@ -61,6 +65,7 @@ import { computed, ref } from 'vue';
 import { toCurrency } from '@/shared/formatters';
 import parts from '../data/parts';
 import PartSelector from './PartSelector.vue';
+import CollapsibleSection from '../shared/CollapsibleSection.vue';
 
 const availableParts = parts;
 const cart = ref([]);

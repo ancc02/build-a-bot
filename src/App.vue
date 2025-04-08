@@ -1,32 +1,30 @@
 <template>
-<header>
-  <nav>
-    <ul>
-      <li class="nav-item">
-        <img class="logo" src="./assets/build-a-bot-logo.png" alt="logo">
-        Build a bot
-      </li>
-    </ul>
-  </nav>
-</header>
+  <header>
+    <nav>
+      <ul>
+        <li class="nav-item">
+          <img class="logo" src="./assets/build-a-bot-logo.png" alt="logo">
+          Build a bot
+        </li>
+      </ul>
+    </nav>
+  </header>
   <main>
-   <!-- <HomePage msg="Welcome to Your Vue.js App"/> -->
-   <RobotBuilder />
-   <!-- <ProductSearch /> -->
+    <!-- <HomePage msg="Welcome to Your Vue.js App"/> -->
+    <RobotBuilder />
+    <!-- <ProductSearch /> -->
   </main>
 </template>
 
-<script>
+<script setup>
+import { ref, provide } from 'vue';
 // import HomePage from './home/HomePage.vue';
 import RobotBuilder from './build/RobotBuilder.vue';
 // import ProductSearch from './search/ProductSearch.vue';
 
-export default {
-  name: 'App',
-  components: {
-    RobotBuilder,
-  },
-};
+const userName = ref('Jim');
+provide('userName', userName);
+
 </script>
 
 <style>
@@ -34,15 +32,14 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
 }
 
-body{
-  background:linear-gradient(to bottom,#555,#999);
+body {
+  background: linear-gradient(to bottom, #555, #999);
   background-attachment: fixed;
 }
 </style>
 
 <style scoped>
-
-main{
+main {
   margin: 0 auto;
   padding: 30px;
   background-color: white;
@@ -50,25 +47,25 @@ main{
   min-height: 350px;
 }
 
-header{
+header {
   background-color: #999;
   width: 1460px;
   margin: 0 auto;
 }
 
-ul{
+ul {
   padding: 3px;
   display: flex;
 }
 
-.nav-item{
+.nav-item {
   display: inline-block;
   padding: 5px 10px;
   font-size: 22px;
   border-right: 1px solid #bbb;
 }
 
-.logo{
+.logo {
   vertical-align: middle;
   height: 30px;
 }
