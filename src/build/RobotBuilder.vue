@@ -41,34 +41,19 @@
         @partSelected="part => selectedRobot.base = part" />
     </div>
   </div>
-  <div>
-    <h1>Cart</h1>
-    <table>
-      <thead>
-        <tr>
-          <th>Robot</th>
-          <th class="cost">Cost</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="(robot, index) in cart" :key="index">
-          <td>{{ robot.head.title }}</td>
-          <td class="cost">{{ toCurrency(robot.cost) }}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
 </template>
 
 <script setup>
 import { computed, ref } from 'vue';
-import { toCurrency } from '@/shared/formatters';
 import parts from '../data/parts';
 import PartSelector from './PartSelector.vue';
 import CollapsibleSection from '../shared/CollapsibleSection.vue';
 
+import useCartStore from '../stores/cartStore';
+
+const cartStore = useCartStore();
+
 const availableParts = parts;
-const cart = ref([]);
 
 const selectedRobot = ref({
   head: {},
@@ -87,7 +72,7 @@ const addToCart = () => {
     robot.torso.cost +
     robot.rightArm.cost +
     robot.base.cost;
-  cart.value.push({ ...robot, cost });
+  cartStore.cart.push({ ...robot, cost });
 };
 </script>
 
