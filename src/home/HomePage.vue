@@ -1,10 +1,10 @@
 <template>
-  <div class="Home">
+  <div class="home">
     <div>
       <img class="robot" src="../assets/robot-home.png" aria-hidden="true" alt="Robot" />
     </div>
     <div class="get-started">
-      <a href>get started</a> building your first robot
+      <router-link to="/build">get started</router-link> building your first robot
     </div>
   </div>
 </template>
