@@ -18,5 +18,6 @@ module.exports = {
     'operator-linebreak': 0,
     'no-return-assign': 0,
     'no-param-reassign': 0,
+    'no-trailing-spaces': 0,
   },
 };
